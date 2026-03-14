@@ -44,6 +44,7 @@
       --olive: #6F8F4E;
       --white: #FFFFFF;
       --soft-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+      --card-hover: 0 25px 35px -10px rgba(0,0,0,0.15);
     }
 
     .container {
@@ -125,13 +126,13 @@
       border-radius: 16px;
     }
 
-    /* ----- HERO SECTION (REDESIGNED, NO BACKGROUND IMAGE) ----- */
+    /* ----- HERO SECTION (WITH LOGO IMAGE) ----- */
     .hero {
       position: relative;
       min-height: 90vh;
       display: flex;
       align-items: center;
-      background: var(--charcoal);  /* solid dark background */
+      background: var(--charcoal);
       color: white;
     }
 
@@ -144,18 +145,22 @@
       z-index: 5;
     }
 
-    .left-logo {
+    /* logo image */
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--gold);
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--gold);
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow: hidden;
     }
-    .left-logo i {
-      font-size: 1.8rem;
-      color: var(--gold);
+    .logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .hero-tag {
@@ -178,7 +183,6 @@
       z-index: 2;
     }
 
-    /* elegant main title */
     .hero-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(3.5rem, 12vw, 7rem);
@@ -240,14 +244,12 @@
     }
     .hero-title, .hero-subhead, .hero-buttons, .hero-highlights {
       animation: fadeInUp 0.8s ease-out forwards;
-      opacity: 0; /* start invisible */
+      opacity: 0;
     }
     .hero-title { animation-delay: 0.1s; }
     .hero-subhead { animation-delay: 0.2s; }
     .hero-buttons { animation-delay: 0.3s; }
     .hero-highlights { animation-delay: 0.4s; }
-
-    /* (rest of the styles remain unchanged) */
 
     /* about */
     .about-grid {
@@ -287,7 +289,7 @@
     }
     .food-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 25px 35px -10px rgba(0,0,0,0.15);
+      box-shadow: var(--card-hover);
     }
     .food-card-img {
       height: 180px;
@@ -317,9 +319,11 @@
       border-radius: 24px;
       text-align: center;
       transition: 0.2s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
     }
     .feature-card:hover {
       background: #ece3db;
+      transform: scale(1.02);
     }
     .feature-card i {
       font-size: 2.8rem;
@@ -346,6 +350,10 @@
       padding: 2rem;
       border-radius: 24px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+      transition: 0.2s;
+    }
+    .review-card:hover {
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.1);
     }
     .stars {
       color: var(--gold);
@@ -363,18 +371,19 @@
       color: var(--olive);
     }
 
-    /* gallery grid */
+    /* gallery grid - enlarged frames */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
       margin-top: 2rem;
     }
     .gallery-item {
-      height: 240px;
+      height: 280px;
       border-radius: 18px;
       overflow: hidden;
       transition: all 0.3s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
     .gallery-item:hover {
       transform: scale(1.02);
@@ -439,6 +448,7 @@
       padding: 4rem 2rem;
       text-align: center;
       color: white;
+      box-shadow: var(--soft-shadow);
     }
     .cta-banner h2 {
       color: white;
@@ -520,18 +530,19 @@
       .hero-highlights { flex-direction: column; gap: 0.8rem; width: auto; }
       .hero-buttons .btn { width: 100%; text-align: center; }
       .hero-overlay { padding: 1rem 5%; }
-      .left-logo { font-size: 1.3rem; }
-      .left-logo i { font-size: 1.4rem; }
+      .logo-img { width: 50px; height: 50px; }
+      .gallery-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- HERO SECTION (REDESIGNED, NO BACKGROUND IMAGE, RATING 4.8) -->
+  <!-- HERO SECTION (WITH LOGO IMAGE) -->
   <section class="hero" id="home">
     <div class="hero-overlay">
-      <div class="left-logo">
-        <i class="fas fa-utensils"></i>
-        <span>The Kook</span>
+      <!-- logo image (placeholder - replace with your logo) -->
+      <div class="logo-img">
+        <img src="logo.png' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23C9A96E'/%3E%3Ctext x='70' y='80' font-size='50' text-anchor='middle' fill='%231F1F1F' font-family='Arial' font-weight='bold'%3EK%3C/text%3E%3C/svg%3E"
+             alt="The Kook logo">
       </div>
       <div class="hero-tag"><i class="fas fa-star"></i> 4.8 (518)</div>
     </div>
@@ -543,14 +554,14 @@
         <a href="#location" class="btn btn-secondary">Get Directions</a>
       </div>
       <div class="hero-highlights">
-        <span><i class="fas fa-star"></i> 4.8 ⭐ (518 reviews)</span>
+        <span><i class="fas fa-star"></i> 4.8 ⭐ </span>
         <span><i class="fas fa-indian-rupee-sign"></i> ₹200–400 per person</span>
         <span><i class="fas fa-users"></i> Perfect for families & friends</span>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION (2) -->
+  <!-- ABOUT SECTION -->
   <section id="about">
     <div class="container">
       <h2 class="section-title">Welcome to The Kook Restaurant</h2>
@@ -568,11 +579,20 @@
     </div>
   </section>
 
-  <!-- MENU HIGHLIGHTS (3) -->
+  <!-- MENU HIGHLIGHTS (FIRST CARD IS MENU IMAGE) -->
   <section id="menu" style="background: var(--beige);">
     <div class="container">
       <h2 class="section-title">Popular Food & Drinks</h2>
       <div class="menu-grid">
+        <!-- first card: Menu image (replace with your own) -->
+        <div class="food-card">
+          <div class="food-card-img">
+            <img src="menu.png?w=600&auto=format&fit=crop" alt="Our Menu" loading="lazy">
+          </div>
+          <h4>Our Special Menu</h4>
+          <p>Explore our variety</p>
+        </div>
+        <!-- remaining cards -->
         <div class="food-card"><div class="food-card-img"><img src="https://images.unsplash.com/photo-1569058242253-9a5b6f8f3a2e?w=600&auto=format&fit=crop" alt="Thai Chicken Pot Rice" loading="lazy"></div><h4>Thai Chicken Pot Rice</h4><p>₹280</p></div>
         <div class="food-card"><div class="food-card-img"><img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&auto=format&fit=crop" alt="Chicken Sandwich" loading="lazy"></div><h4>Chicken Sandwich</h4><p>₹220</p></div>
         <div class="food-card"><div class="food-card-img"><img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop" alt="Biryani" loading="lazy"></div><h4>Biryani</h4><p>₹290</p></div>
@@ -588,7 +608,7 @@
     </div>
   </section>
 
-  <!-- WHY CHOOSE US (4) -->
+  <!-- WHY CHOOSE US -->
   <section id="why">
     <div class="container">
       <h2 class="section-title">Why People Love The Kook</h2>
@@ -601,7 +621,7 @@
     </div>
   </section>
 
-  <!-- CUSTOMER REVIEWS (5) -->
+  <!-- CUSTOMER REVIEWS -->
   <section style="background: var(--beige);">
     <div class="container">
       <h2 class="section-title">What Our Customers Say</h2>
@@ -613,7 +633,7 @@
     </div>
   </section>
 
-  <!-- RESTAURANT EXPERIENCE GALLERY (6) -->
+  <!-- RESTAURANT EXPERIENCE GALLERY (ENLARGED FRAMES) -->
   <section>
     <div class="container">
       <h2 class="section-title">Restaurant Experience</h2>
@@ -621,20 +641,20 @@
         <div class="gallery-item"><img src="inside 2.png?w=600&auto=format&fit=crop" alt="Interior" loading="lazy"></div>
         <div class="gallery-item"><img src="inside 1.png?w=600&auto=format&fit=crop" alt="Dining area" loading="lazy"></div>
         <div class="gallery-item"><img src="inside 3.png?w=600&auto=format&fit=crop" alt="Food close up" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop" alt="Drinks" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1574936145840-28808d77a0b6?w=600&auto=format&fit=crop" alt="Exterior" loading="lazy"></div>
+        <div class="gallery-item"><img src="inside 4.png?w=600&auto=format&fit=crop" alt="Drinks" loading="lazy"></div>
+        <div class="gallery-item"><img src="inside 5.png?w=600&auto=format&fit=crop" alt="Exterior" loading="lazy"></div>
         <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=600&auto=format&fit=crop" alt="Night lighting" loading="lazy"></div>
       </div>
     </div>
   </section>
 
-  <!-- LOCATION SECTION (7) -->
+  <!-- LOCATION SECTION -->
   <section id="location" style="background: var(--beige);">
     <div class="container">
       <h2 class="section-title">Visit Us in Sikar</h2>
       <div class="location-grid">
         <div class="map-container">
-          <iframe src="https://maps.google.com/maps?q=Piprali%20Rd,%20Ghorana%20Ki%20Dhani,%20Dhobiyon%20Ka%20Mohalla,%20Sikar,%20Rajasthan%20332001,%20India&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.901968800514!2d75.1745939101471!3d27.627552628908813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396cbbe834df69e3%3A0x339ed66364820ba6!2sThe%20Kook%20Restaurant!5e0!3m2!1sen!2sin!4v1773477542437!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="address-box">
           <h3>The Kook</h3>
@@ -650,7 +670,7 @@
     </div>
   </section>
 
-  <!-- ORDER / RESERVATION CTA (8) -->
+  <!-- ORDER / RESERVATION CTA -->
   <section style="padding: 3rem 0;">
     <div class="container">
       <div class="cta-banner">
@@ -664,7 +684,7 @@
     </div>
   </section>
 
-  <!-- FOOTER (9) -->
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="container">
       <div class="footer-grid">
